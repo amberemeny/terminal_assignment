@@ -2,7 +2,7 @@ class Sunflower
     attr_accessor :location, :growth_level, :water_level, :growth_modifier, :pesticide, :fertiliser
     def initialize(location, growth_level)
         @location = location 
-        @growth_level = growth_level
+        @growth_level = 0
         @growth_modifier = 0
         @fertiliser = false
         @water_level = 0
@@ -43,6 +43,14 @@ class Sunflower
             @pesticide = true
             puts "You have sprayed your plant with pesticide."
         end
+    end
+
+    def flower_sequence
+        puts "flowered"
+    end
+
+    def death_sequence
+        puts "dead"        
     end
     
 end
