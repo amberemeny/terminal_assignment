@@ -1,12 +1,12 @@
 class Sunflower
-    attr_accessor :location, :growth_level, :water_level
+    attr_accessor :location, :growth_level, :water_level, :growth_modifier, :pesticide, :fertiliser
     def initialize(location, growth_level)
         @location = location 
         @growth_level = growth_level
-        @growth_multiplier = 0
+        @growth_modifier = 0
         @fertiliser = false
         @water_level = 0
-        @bug_chance = 1
+        @pesticide = false
     end
 
     def water 
@@ -15,12 +15,15 @@ class Sunflower
         else
             puts "You can't water your plant again today."
         end
-        puts @water_level #! TESTING OUTPUT
-        puts response #! TESTING OUTPUT
     end
 
     def fertilise
-        @fertiliser ? puts("You can't fertilise your plant again.") : @fertiliser = true
+        if @fertiliser == true
+            puts "You can't use more fertiliser on your plant."
+        elsif @fertiliser == false
+            @fertiliser = true
+            puts "You have fertilised your plant."
+        end
     end
 
     def move
@@ -30,6 +33,15 @@ class Sunflower
         elsif @location == "inside"
             @location = "outside"
             puts "You have moved your plant outside."
+        end
+    end
+
+    def add_pesticide
+        if @pesticide == true
+            puts "You can't use pesticide on your plant again."
+        else
+            @pesticide = true
+            puts "You have sprayed your plant with pesticide."
         end
     end
     
