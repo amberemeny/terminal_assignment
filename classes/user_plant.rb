@@ -1,32 +1,32 @@
 class Sunflower
     attr_accessor :location, :growth_level, :water_level, :growth_modifier, :pesticide, :fertiliser
     def initialize(location, growth_level)
-        @location = location 
-        @growth_level = 0
-        @growth_modifier = 0
-        @fertiliser = false
-        @water_level = 0
-        @pesticide = false
+        @location = location # Location of the plant.
+        @growth_level = 0 # Level of growth of the plant, flowers at 10, dies at a negative number.
+        @growth_modifier = 0 # Speed at which the plant grows.
+        @fertiliser = false # Presence of fertiliser.
+        @water_level = 0 # Level of water in the plant.
+        @pesticide = false # Presence of pesticides.
     end
 
-    def water 
+    def water # Method to water the plant.
         if @water_level != 5
             @water_level = 5
         else
-            puts "You can't water your plant again today."
+            puts "You can't water your plant again today." # Water once per day only.
         end
     end
 
-    def fertilise
+    def fertilise # Method to fertilise the plant.
         if @fertiliser == true
-            puts "You can't use more fertiliser on your plant."
+            puts "You can't use more fertiliser on your plant." # Allows only one occurence of fertiliser per game.
         elsif @fertiliser == false
             @fertiliser = true
             puts "You have fertilised your plant."
         end
     end
 
-    def move
+    def move # Moves plant inside if outside and outside if inside.
         if @location == "outside"
             @location = "inside"
             puts "You have moved your plant inside."
@@ -36,21 +36,23 @@ class Sunflower
         end
     end
 
-    def add_pesticide
+    def add_pesticide # Adds pesticide to plant.
         if @pesticide == true
-            puts "You can't use pesticide on your plant again."
+            puts "You can't use pesticide on your plant again." # Once per game.
         else
             @pesticide = true
             puts "You have sprayed your plant with pesticide."
         end
     end
 
-    def flower_sequence
-        puts "flowered"
+    def flower_sequence #growth level is over 10, this method runs.
+        system("clear")
+        "Wow! Your sunflower has a surprise for you! It has flowered!"
     end
 
-    def death_sequence
-        puts "dead"        
+    def death_sequence #growth level is under 0, this method runs.
+        system("clear")
+        puts "Oh no, your plant has died!"        
     end
     
 end
