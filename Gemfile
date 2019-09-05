@@ -6,5 +6,6 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 # gem "rails"
 
-# Added at 2019-09-02 13:57:53 +1000 by amberemeny:
-gem "test-unit", "~> 3.3"
+gem "colorize", "~> 0.8.1"
+
+gem "artii", "~> 2.1"

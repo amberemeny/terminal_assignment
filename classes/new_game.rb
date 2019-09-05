@@ -1,5 +1,7 @@
 require_relative "user_plant.rb"
 require_relative "../simulation.rb"
+require 'colorize'
+require 'artii'
 
 class New_game # Sets the class to initialize the details of a new game.
     attr_accessor :new_game_response, :user_response
@@ -20,7 +22,7 @@ class New_game # Sets the class to initialize the details of a new game.
         if @new_game_response != "Y" #not yes.
             if @new_game_response != "H" #not help
                 if @new_game_response != "N" #not no
-                    puts "This is an invalid response."
+                    puts "This is an invalid response.".colorize(:red) 
                     @user_response = "wrong"
                     repeat
                 else
@@ -29,7 +31,7 @@ class New_game # Sets the class to initialize the details of a new game.
                     repeat
                 end
             else
-                puts "Enter 'Y' to begin a new game.\nEnter 'N' to decide not to begin a new game." # New game manual.
+                puts "-- MANUAL --\nEnter 'Y' to begin a new game.\nEnter 'N' to decide not to begin a new game." # New game manual.
                 @user_response = "wrong"
                 repeat
             end

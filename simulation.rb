@@ -1,5 +1,7 @@
 require_relative "./classes/user_plant.rb"
 require_relative "./classes/new_game.rb"
+require 'colorize'
+require 'artii'
 
 class Simulation 
     attr_accessor :response, :choice_input1, :choice_input2
@@ -9,24 +11,26 @@ class Simulation
         @day_number = 1 # Counting the number of days the simulation is run for.
         @water_reduction = 0 # The speed at which the water_level is reduced.
         @bug_chance = 1 # The indication of the chance for bugs.
-        @bug_status = "There are no bugs on your plant!" # Current status of bugs.
+        @bug_status = "There are no bugs on your plant!".colorize(:green) # Current status of bugs.
         @water_condition = "" # Current condition associated with water_level.
     end
 
     def begin_game # Signifies the beginning of the game.
         system("clear")
-        puts "Welcome to the Plant Sim!\nYou have a beautiful new sunflower seedling to look after that you rescued from Bunnings.\nIt isn't looking so good." #Flavor test place holder for new game.
+        "You have a beautiful new sunflower seedling to look after that you rescued from Bunnings.\nIt isn't looking so good.".each_char { |c| putc c; sleep 0.01 }
+        puts " "
         choice_input1
-    end 
-
+    end
     def choice_input1 # Asks user for initial day choice input.
-        puts "What would you like to do? (W)ater, (F)ertilise, use (P)esticide, (M)ove your plant, move to the (N)ext day, or ask for (H)elp?"
+        "What would you like to do? (W)ater, (F)ertilise, use (P)esticide, (M)ove your plant, move to the (N)ext day, or ask for (H)elp?".each_char { |c| putc c; sleep 0.015 }
+        puts " "
         @response = gets.chomp.upcase
         self.choice
     end
 
     def choice_input2 # Asks the user for second or more choice of daily input.
-        puts "Anything else? (W)ater, (F)ertilise, use (P)esticide, (M)ove your plant, move to the (N)ext day, or ask for (H)elp?"
+        "Anything else? (W)ater, (F)ertilise, use (P)esticide, (M)ove your plant, move to the (N)ext day, or ask for (H)elp?".each_char { |c| putc c; sleep 0.001 }
+        puts " "
         @response = gets.chomp.upcase
         self.choice
     end
@@ -51,7 +55,7 @@ class Simulation
 'P' - Use pesticide on your plant to treat a bug infestation or to prevent one.
 'H' - Opens this manual again."
         else
-            puts "Invalid response." # Error handling
+            puts "Invalid response.".colorize(:red) # Error handling
         end
         choice_input2 # Asking for recurring input for choices.
     end
@@ -74,19 +78,19 @@ class Simulation
 
     def calculate_bugs # Uses bug_chance to calculate the occurence of bugs.
         if @plant.pesticide == true #ifthere is pesticide present, there will never be bugs.
-            @bug_status = "There are no bugs on your plant!"
+            @bug_status = "There are no bugs on your plant!".colorize(:green)
         else
             if @bug_chance == 1 #10% chance bugs.
                 if rand(100) <= 10
-                    @bug_status = "Oh no, your plant has bugs!"
+                    @bug_status = "Oh no, your plant has bugs!".colorize(:red)
                 end
             elsif @bug_chance == 2 #20% chance bugs.
                 if rand(100) <= 20
-                    @bug_status = "Oh no, your plant has bugs!"
+                    @bug_status = "Oh no, your plant has bugs!".colorize(:red)
                 end
             elsif @bug_chance == 3 #30% chance bugs.
                 if rand(100) <= 30
-                    @bug_status = "Oh no, your plant has bugs!"
+                    @bug_status = "Oh no, your plant has bugs!".colorize(:red)
                 end
             end
         end
@@ -107,7 +111,7 @@ class Simulation
             @plant.growth_modifier += 0.3
         end
 
-        if @bug_status == "There are no bugs on your plant!"  # bug_status influencing the modifier
+        if @bug_status == "There are no bugs on your plant!".colorize(:green)  # bug_status influencing the modifier
             @plant.growth_modifier += 0
         else 
             @plant.growth_modifier -= 0.7
@@ -136,43 +140,48 @@ class Simulation
 
     def growth_condition # Displays the growth of the plant in flavor text based on the growth modifier.
         if @plant.growth_modifier >= 1.3
-            puts "Your plant has grown so much!"
+            puts "Your plant has grown so much!".colorize(:green)
         elsif @plant.growth_modifier >= 1.0
-            puts "Your plant has grown well!"
+            puts "Your plant has grown well!".colorize(:green)
         elsif @plant.growth_modifier >= 0.3
-            puts "Your plant has grown a little."
+            puts "Your plant has grown a little.".colorize(:yellow)
         elsif @plant.growth_modifier >= 0
-            puts "Your plant has grown a tiny bit."
+            puts "Your plant has grown a tiny bit.".colorize(:yellow)
         elsif @plant.growth_modifier >= -1.2 
-            puts "Your plant is wilting."
+            puts "Your plant is wilting.".colorize(:red)
         else 
-            puts "Your plant is dying!"
+            puts "Your plant is dying!".colorize(:red)
         end
     end
 
     def calculate_water_condition # Calculates the water condition variable based on the water level and outputs flavor text.
         if @plant.water_level <= 1
-            @water_condition = "Your plant is desperate and needs water!"
+            @water_condition = "Your plant is desperate and needs water!".colorize(:red)
         elsif @plant.water_level == 1
-            @water_condition = "Your plant is too dry."
+            @water_condition = "Your plant is too dry.".colorize(:red)
         elsif @plant.water_level == 2
-            @water_condition = "Your plant is a little dry."
+            @water_condition = "Your plant is a little dry.".colorize(:yellow)
         elsif @plant.water_level == 3 
-            @water_condition = "Your plant could use some water."
+            @water_condition = "Your plant could use some water.".colorize(:yellow)
         elsif @plant.water_level == 4
-            @water_condition = "Your plant is well watered."
+            @water_condition = "Your plant is well watered.".colorize(:green)
         elsif @plant.water_level == 5
-            @water_condition = "Your plant is sufficiently watered."
+            @water_condition = "Your plant is sufficiently watered.".colorize(:green)
         end
     end
 
     def exit_sequence # Defines the exit sequence when a win or fail condition is met.
-        puts "Thankyou for playing, enter 'E' to exit."
+        "Thankyou for playing, enter 'E' to exit.".each_char { |c| putc c; sleep 0.015 } 
+        puts " "
         if gets.chomp.upcase == "E" 
-            puts "Goodbye!"
+            system('clear')
+            a = Artii::Base.new :font => 'slant'
+            a.asciify('Goodbye!').colorize(:yellow).each_char { |c| putc c; sleep 0.005 }
+            puts " "
+            puts " "
             exit # Will exit the application.
         else
-            puts "Invalid response." # Error handling
+            puts "Invalid response.".colorize(:red) # Error handling
             exit_sequence
         end
     end
@@ -180,11 +189,13 @@ class Simulation
     def condition_win # Asks if the win or fail conditions have been met and runs the appropriate methods.
         if @plant.growth_level >= 10
             @plant.flower_sequence
-            puts "You took #{@day_number} days for your sunflower plant to produce a glorious flower!"
+            "It took #{@day_number} days for your sunflower plant to produce a glorious flower!".each_char { |c| putc c; sleep 0.015 }
+            puts " " 
             exit_sequence
         elsif @plant.growth_level <= 0
             @plant.death_sequence
-            puts "You took #{@day_number} days to kill your plant.\nTry to pay more attention next time!"
+            "It took #{@day_number} days for you to kill your plant.\nTry to pay more attention next time!".colorize(:red).each_char { |c| putc c; sleep 0.015 }
+            puts " "
             exit_sequence
         else
         end
@@ -199,6 +210,7 @@ class Simulation
         @plant.growth_level = @plant.growth_modifier + @plant.growth_level # Sets the growth level to add the modifier.
         @plant.water_level -= @water_reduction # Causes water reduction to occur each day.
         @day_number += 1 # Adds a day to the day counter.
+        system('clear')
         puts "You have chosen to move to the next day!\nToday is day #{@day_number}." # Flavor text for the day.
         puts "Your plant is #{@plant.location}." # Displays location.
         puts "#{@bug_status}" # Displays occurence of bugs.
