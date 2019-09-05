@@ -1,14 +1,4 @@
-## User Stories
-As a [user] I want to [action] so that I can [reason].
-
-As a user I want to grow a virtual plant so that I can enjoy myself without growing a real plant.
-
-As a user I want to take care of my virtual plant in a realistic sense so that it's like growing a real plant. 
-
-As a user I want to environment my plant is in to influence it's growth so that I can take care of my virtual plant realistically.
-
-As a user I want my plant to be able die if I don't take care of it so I can be motivated to take care of my virtual plant properly.
-
+# Software Development Plan
 ## Purpose and Scope
 The application I have chosen to develop is a plant simulation game created with the Ruby programming language. The program is designed to simulate the ecological growth stages of a potted sunflower plant. By implementing planned features, the user will be able to modify parameters that will then influence the increase or decrease of the plant's health and growth. Eventually, the plant will flower or die depending on how  well it is looked after.
 <p>
@@ -17,6 +7,15 @@ Each iteration of the game will begin with a new day. After displaying the day n
 The goal and condition to complete the game is to look after the plant well enough that it produces a flower. This is achieved by optimising the plants water level, intake of sunlight, location and fertiliser level. Upon winning or losing, the user will be able to exit the application or begin again.
 <p>
 The reason I am developing the Plant Sim application is to provide the user with the satisfaction of growing a flowering plant, without real-world time consumption or costs. My target audience for the project are mostly plant lovers, simulation game enthusiasts and teens/young adults. I am choosing to implement features that simulate a realistic difficulty in catering to a real plants needs. I believe that by doing so, I can provide an enjoyable alternative to taking care of a real plant. 
+
+### User Stories
+As a user I want to grow a virtual plant so that I can enjoy myself without growing a real plant.
+
+As a user I want to take care of my virtual plant in a realistic sense so that it's like growing a real plant. 
+
+As a user I want to environment my plant is in to influence it's growth so that I can take care of my virtual plant realistically.
+
+As a user I want my plant to be able die if I don't take care of it so I can be motivated to take care of my virtual plant properly.
 
 ## Features and Implementation
 When considering my key user stories, I came up with a concise list of features that I decided to implement.
@@ -33,17 +32,17 @@ When considering my key user stories, I came up with a concise list of features 
 
 ## User Interaction and Experience
 ### User Interaction and Information
-<br>At the start of a new game, the user is asked if they would like to start a new game. 
-<br>`y` - begins a new game.
-<br>`n` - asks the user to try again.
-<br>`h` - displays the manual.
+At the start of a new game, the user is asked if they would like to start a new game. 
+`y` - begins a new game.
+`n` - asks the user to try again.
+`h` - displays the manual.
 
 The introduction flavor text is displayed and the user is asked to enter another option.
-<br>`w` - waters the plant, once per in-game day.
-<br>`f` - fertilises the plant, once per game.
-<br>`p` - uses pesticide on the plant, once per game.
-<br>`m` - moves the location of the plant. 
-<br>`n` - initialises the next in-game day.
+`w` - waters the plant, once per in-game day.
+`f` - fertilises the plant, once per game.
+`p` - uses pesticide on the plant, once per game.
+`m` - moves the location of the plant. 
+`n` - initialises the next in-game day.
 
 On completion of each day, variables will be calculated and flavor text relating to growth level, water condition, day number and bug status will be displayed to the user. After which, the days options will repeat. 
 <br> At the end of each in-game day, the growth level will be compared with win or lose conditions to decide if the plant has flowered or died. Upon a win or lose condition, the user will be able to enter `e` to exit the application.
@@ -66,6 +65,11 @@ On all occasions of an invalid response, a prompt will be displayed to the user.
 ![error_handling](https://github.com/amberemeny/terminal_assignment/blob/master/images/error_handling.png?raw=true)
 
 ## Implementation Plan
+The implementation of features is handled by Trello. Here is a link to my board: [https://trello.com/b/pvIvcHf1/terminal-assessment](https://trello.com/b/pvIvcHf1/terminal-assessment)
+
+In the board are assessment criteria organised into cards, features to be implemented featuring checklists and a checklist to write the readme file.
+Below is an example of how I organised the mapping out of variables to implement to ensure the application runs smoothly.
+![implementation](https://github.com/amberemeny/terminal_assignment/blob/testing/images/Class%20Implementation.jpg?raw=true)
 
 ## Development Log
 
@@ -74,8 +78,8 @@ On all occasions of an invalid response, a prompt will be displayed to the user.
  <br>4/09 15:30 - Implemented day cycles for pesticide, bugs and growth multiplier.
  <br>4/09 21:30 - Implemented growth levels, flavor text and initialised win conditions.
  <br>5/09 12:00 - Implemented all planned features, commented all code, installed colorize and artii gems.
+ <br>5/09 14:30 - Software development plan complete.
  </br>
 Significant problems:
-	One of the bigger problems that I've come across have been the way the application handles the initialisation of a new game. I wanted to implement a feature that upon calling for a new game, resets all the variables of the plant object. I tried instead to utilise the "rerun" gem but couldn't get it to install due to installation errors. Instead if was suggested to begin a game with two objects, run one, and then copy the unmodified object to overwrite the current one to essentially wipe the object clean. I am unsure how to implement this and have struggled to locate relevant help online so I have decided to keep it simple with just the option to exit the game on a win or lose condition and rely on the user to run the program again.
-
-
+	<br>One of the bigger problems that I've come across have been the way the application handles the initialisation of a new game. I wanted to implement a feature that upon calling for a new game, resets all the variables of the plant object. I tried instead to utilise the "rerun" gem but couldn't get it to install due to installation errors. Instead if was suggested to begin a game with two objects, run one, and then copy the unmodified object to overwrite the current one to essentially wipe the object clean. I am unsure how to implement this and have struggled to locate relevant help online so I have decided to keep it simple with just the option to exit the game on a win or lose condition and rely on the user to run the program again.
+	<br> I struggled with implementing the manuals a lot. I tried initialising both the new game and in game manual as objects of a manual class to no avail. I came across constant errors for over an hour before deciding to use an in-method string to put the manual directly instead.
