@@ -3,6 +3,9 @@ GEM
   specs:
     artii (2.1.2)
     colorize (0.8.1)
+    power_assert (1.1.5)
+    test-unit (3.3.3)
+      power_assert
 
 PLATFORMS
   ruby
@@ -10,6 +13,7 @@ PLATFORMS
 DEPENDENCIES
   artii (~> 2.1)
   colorize (~> 0.8.1)
+  test-unit (~> 3.3)
 
 BUNDLED WITH
    2.0.2
