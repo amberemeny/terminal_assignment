@@ -1,3 +1,6 @@
+require 'colorize'
+require 'artii'
+
 class Sunflower
     attr_accessor :location, :growth_level, :water_level, :growth_modifier, :pesticide, :fertiliser
     def initialize(location, growth_level)
@@ -47,9 +50,28 @@ class Sunflower
 
     def flower_sequence #growth level is over 10, this method runs.
         system("clear")
-        "Wow! Your sunflower has a surprise for you! It has flowered!"
+        "Wow! Your sunflower has a surprise for you! It has".colorize(:green).each_char { |c| putc c; sleep 0.03 } 
+        " flowered!".colorize(:blue).each_char { |c| putc c; sleep 0.03 }
+        puts " "
+        puts <<-'EOF'
+           __
+        .-/  \-.
+       (  \__/  )
+      /`-./;;\.-`\
+      \ _.\;;/._ /
+       (  /  \  )
+        '-\__/-'.-,
+       ,    \\ (-. )
+       |\_   ||/.-`
+       \'.\_ |;`
+        '--,\||     ,
+            `;|   _/|
+             // _/.'/
+            //_/,--'
+           ||'-`                  
+EOF
+puts " "
     end
-
     def death_sequence #growth level is under 0, this method runs.
         system("clear")
         puts "Oh no, your plant has died!"        
