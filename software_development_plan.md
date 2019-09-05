@@ -32,10 +32,50 @@ When considering my key user stories, I came up with a concise list of features 
 - Error handling - If at any time the user inputs an invalid argument, the application will display a prompt and inform the user of the help command. 
 
 ## User Interaction and Experience
-At any time within the application, the user is able to use the help command to display a list of possible inputs. 
-The manual will display as follows:
+### User Interaction and Information
+At the start of a new game, the user is asked if they would like to start a new game. 
+`y` - begins a new game.
+`n` - asks the user to try again.
+`h` - displays the manual.
+
+The introduction flavor text is displayed and the user is asked to enter another option.
+`w` - waters the plant, once per in-game day.
+`f` - fertilises the plant, once per game.
+`p` - uses pesticide on the plant, once per game.
+`m` - moves the location of the plant. 
+`n` - initialises the next in-game day.
+
+On completion of each day, variables will be calculated and flavor text relating to growth level, water condition, day number and bug status will be displayed to the user. After which, the days options will repeat. 
+<br> At the end of each in-game day, the growth level will be compared with win or lose conditions to decide if the plant has flowered or died. Upon a win or lose condition, the user will be able to enter `e` to exit the application.
+
+Below is an image of the flowchart used to represent user interaction.
+![user_interaction](https://github.com/amberemeny/terminal_assignment/blob/master/images/User%20Interaction.jpg?raw=true =600x)
+
+### Manual Information 
+At any time within the application, the user is able to use the `h` (help) command to display a list of possible inputs. 
+During the menu screen, the manual is short and concise, only displaying the relevant information. 
+
+![new_game_manual](https://github.com/amberemeny/terminal_assignment/blob/master/images/new_game_manual.png?raw=true)
+
+After a new game has begun, the manual displays more information relevant to the commands available.
+
+![in_game_manual](https://github.com/amberemeny/terminal_assignment/blob/master/images/in_game_manual.png?raw=true)
+
+### Error Handling
+On all occasions of an invalid response, a prompt will be displayed to the user. 
+![error_handling](https://github.com/amberemeny/terminal_assignment/blob/master/images/error_handling.png?raw=true)
 
 ## Implementation Plan
- 
+
+## Development Log
+
+ 4/09 09:00 - Completed most documentation, beginning to initiate basic code.
+ 4/09 12:00 - Successfully added watering, fertilising and move functions to application. 
+ 4/09 15:30 - Implemented day cycles for pesticide, bugs and growth multiplier.
+ 4/09 21:30 - Implemented growth levels, flavor text and initialised win conditions.
+ 5/09 12:00 - Implemented all planned features, commented all code, installed colorize and artii gems.
+ </br>
+Significant problems:
+	One of the bigger problems that I've come across have been the way the application handles the initialisation of a new game. I wanted to implement a feature that upon calling for a new game, resets all the variables of the plant object. I tried instead to utilise the "rerun" gem but couldn't get it to install due to installation errors. Instead if was suggested to begin a game with two objects, run one, and then copy the unmodified object to overwrite the current one to essentially wipe the object clean. I am unsure how to implement this and have struggled to locate relevant help online so I have decided to keep it simple with just the option to exit the game on a win or lose condition and rely on the user to run the program again.
 
 
