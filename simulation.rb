@@ -1,38 +1,32 @@
 require_relative "./classes/user_plant.rb"
+require_relative "./classes/new_game.rb"
 
-class Simulation
+class Simulation 
     attr_accessor :response, :choice_input1, :choice_input2
     def initialize(plant)
         @plant = plant # Sets the plant object inside the simulation.
         @response = "" # Defines response as nothing. Essentially a placeholder.
-        @day_number = 1 
+        @day_number = 1 # Counting the number of days the simulation is run for.
         @water_reduction = 0 # The speed at which the water_level is reduced.
         @bug_chance = 1 # The indication of the chance for bugs.
         @bug_status = "There are no bugs on your plant!" # Current status of bugs.
-        @water_condition = "" # Current condition associated with water_level
+        @water_condition = "" # Current condition associated with water_level.
     end
 
-    # if @response == "H" #Constantly checks if the response is to display the manual.
-    #     self.manual 
-    # end
-
-    def begin_game
-        puts "This is a new game." #Flavor test place holder for new game.
+    def begin_game # Signifies the beginning of the game.
+        system("clear")
+        puts "Welcome to the Plant Sim!\nYou have a beautiful new sunflower seedling to look after that you rescued from Bunnings.\nIt isn't looking so good." #Flavor test place holder for new game.
         choice_input1
     end 
 
-    def manual
-        puts "Manual placeholder." #Placeholder for manual text.
-    end
-
     def choice_input1 # Asks user for initial day choice input.
-        puts "What would you like to do?"
+        puts "What would you like to do? (W)ater, (F)ertilise, use (P)esticide, (M)ove your plant, move to the (N)ext day, or ask for (H)elp?"
         @response = gets.chomp.upcase
         self.choice
     end
 
     def choice_input2 # Asks the user for second or more choice of daily input.
-        puts "Anything else?"
+        puts "Anything else? (W)ater, (F)ertilise, use (P)esticide, (M)ove your plant, move to the (N)ext day, or ask for (H)elp?"
         @response = gets.chomp.upcase
         self.choice
     end
@@ -49,6 +43,15 @@ class Simulation
         elsif @response == "N" # Causing the next day to occur.
             next_day
             choice_input1 # When next day occurs, asking for next initial input.
+        elsif @response == "H" # manual display.
+            puts "-- LIST OF COMMANDS --
+'W' - Water your plant, once per day.
+'F' - Fertilise your plant to help it grow, once per game.
+'M' - Move your plant inside if it is outside and outside if it is inside, at any time.
+'P' - Use pesticide on your plant to treat a bug infestation or to prevent one.
+'H' - Opens this manual again."
+        else
+            puts "Invalid response." # Error handling
         end
         choice_input2 # Asking for recurring input for choices.
     end
@@ -164,14 +167,12 @@ class Simulation
     end
 
     def exit_sequence # Defines the exit sequence when a win or fail condition is met.
-        puts "Exit? (Y)es or (N)o to begin again."
-        if gets.chomp.upcase == "Y" 
+        puts "Thankyou for playing, enter 'E' to exit."
+        if gets.chomp.upcase == "E" 
             puts "Goodbye!"
             exit # Will exit the application.
-        elsif gets.chomp.upcase == "N"
-            puts "reset" #TODO Find how to reset variables.
         else
-            puts "Invalid response."
+            puts "Invalid response." # Error handling
             exit_sequence
         end
     end
@@ -179,9 +180,11 @@ class Simulation
     def condition_win # Asks if the win or fail conditions have been met and runs the appropriate methods.
         if @plant.growth_level >= 10
             @plant.flower_sequence
+            puts "You took #{@day_number} days for your sunflower plant to produce a glorious flower!"
             exit_sequence
         elsif @plant.growth_level <= 0
             @plant.death_sequence
+            puts "You took #{@day_number} days to kill your plant.\nTry to pay more attention next time!"
             exit_sequence
         else
         end
@@ -202,7 +205,6 @@ class Simulation
         growth_condition # Displays flavor text about the growth of the plant.
         @plant.growth_modifier = 0 # Sets growth modifier back to 0
         puts "#{@water_condition}" # Displays flavor text about the watering condition of the plant.
-        puts "This is the growth level: #{@plant.growth_level}" #! For testing purposes --
         condition_win # Asks if win or fail conditions have been met.
     end
 end

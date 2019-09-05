@@ -1,26 +1,11 @@
 require_relative "classes/user_plant"
-require_relative "./new_game.rb"
+require_relative "./simulation.rb"
+require_relative "./classes/new_game.rb"
 
 # -- NEW GAME INITIALIZE --
-puts "Hello there! Would you like to start a new game? (Y)es or (N)o or (H)elp"
-new_game_response = gets.chomp.upcase # Asks the user for Y or N
-
-if new_game_response == "Y" 
-    plant = Sunflower.new("outside", 1) # Creates a new plant.
-    user_game = Simulation.new(plant) # Initializes a new simulation.
-    user_game.begin_game # Runs the "This is a new game." string.
-elsif new_game_response == "H" # Help command.
-    user_game = Simulation.new # Initializes a new simulation.
-    user_game.manual # Displays the manual in the Simulation class.
-    puts "Would you like to start a new game? (Y)es or (N)o"
-    new_game_response = gets.chomp.upcase # Asks the user for Y or N
-    if new_game_response == "Y"
-        plant = Sunflower.new("outside", 1) # Creates a new plant.
-        user_game = Simulation.new # Initializes a new simulation.
-        user_game.begin_game # Runs the "This is a new game." string.
-    end
-else puts "Wrong answer." # If not "Y"
-end
-# -- END --
+puts "Hello there! Would you like to start a new game? (Y)es or (N)o or (H)elp" # Welcome text.
+game = New_game.new("") # Creates new game object.
+game.new_game_response = gets.chomp.upcase # Sets the new game response to user input.
+game.get_response # Asks for a comparison to user input that determines an action.
 
 
