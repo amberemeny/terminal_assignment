@@ -33,23 +33,23 @@ When considering my key user stories, I came up with a concise list of features 
 
 ## User Interaction and Experience
 ### User Interaction and Information
-At the start of a new game, the user is asked if they would like to start a new game. 
-`y` - begins a new game.
-`n` - asks the user to try again.
-`h` - displays the manual.
+<br>At the start of a new game, the user is asked if they would like to start a new game. 
+<br>`y` - begins a new game.
+<br>`n` - asks the user to try again.
+<br>`h` - displays the manual.
 
 The introduction flavor text is displayed and the user is asked to enter another option.
-`w` - waters the plant, once per in-game day.
-`f` - fertilises the plant, once per game.
-`p` - uses pesticide on the plant, once per game.
-`m` - moves the location of the plant. 
-`n` - initialises the next in-game day.
+<br>`w` - waters the plant, once per in-game day.
+<br>`f` - fertilises the plant, once per game.
+<br>`p` - uses pesticide on the plant, once per game.
+<br>`m` - moves the location of the plant. 
+<br>`n` - initialises the next in-game day.
 
 On completion of each day, variables will be calculated and flavor text relating to growth level, water condition, day number and bug status will be displayed to the user. After which, the days options will repeat. 
 <br> At the end of each in-game day, the growth level will be compared with win or lose conditions to decide if the plant has flowered or died. Upon a win or lose condition, the user will be able to enter `e` to exit the application.
 
 Below is an image of the flowchart used to represent user interaction.
-![user_interaction](https://github.com/amberemeny/terminal_assignment/blob/master/images/User%20Interaction.jpg?raw=true =600x)
+![user_interaction](https://github.com/amberemeny/terminal_assignment/blob/master/images/User%20Interaction.jpg?raw=true =450x600)
 
 ### Manual Information 
 At any time within the application, the user is able to use the `h` (help) command to display a list of possible inputs. 
