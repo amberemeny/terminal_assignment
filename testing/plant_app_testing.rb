@@ -2,29 +2,16 @@
 require 'test/unit'
 
 # Uses main plant_app file to test.
-require_relative '../plant_app.rb'
+require_relative '../classes/user_plant.rb'
 
-class PlantAppTest < Test::Unit::TestCase
-    # Setting up a new user plant --
-    def setup
-        @user_plant = User_plant.new(0, "outside", 0)
-    end
-
-    # Testing if new plant's water_level is at 0 --
-    def test_water_level
-        assert_equal(0, @user_plant.water_level)
-    end
-
-    # Testing if new plant's location is outside --
-    def test_location
-        assert_equal("outside", @user_plant.location)
-    end
-
-    # Testing if new plant's growth_level is 0 --
-    def test_growth_level
-        assert_equal(0, @user_plant.growth_level)
+class PlantAppTest < Test::Unit::TestCase # Testing to see if new games are being initialized properly.
+    def test_plant_initialization # Tests if plant is being initialised properly.
+        plant = Sunflower.new("outside", 1) # Creates a new plant.
+        assert_equal(0, plant.water_level) # Tests water_level.
+        assert_equal(1, plant.growth_level) # Tests growth_level.
+        assert_equal("outside", plant.location) # Tests location.
+        assert_equal(false, plant.fertiliser) # Tests fertiliser.
+        assert_equal(false, plant.pesticide) # Tests pesticide.
+        assert_equal(0, plant.growth_modifier) # Tests growth_modifier.
     end
 end
-
-
-

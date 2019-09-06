@@ -5,7 +5,7 @@ class Sunflower
     attr_accessor :location, :growth_level, :water_level, :growth_modifier, :pesticide, :fertiliser
     def initialize(location, growth_level)
         @location = location # Location of the plant.
-        @growth_level = 0 # Level of growth of the plant, flowers at 10, dies at a negative number.
+        @growth_level = growth_level # Level of growth of the plant, flowers at 10, dies at a negative number.
         @growth_modifier = 0 # Speed at which the plant grows.
         @fertiliser = false # Presence of fertiliser.
         @water_level = 0 # Level of water in the plant.
