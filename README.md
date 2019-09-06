@@ -1,5 +1,5 @@
 # Plant Sim Ruby Application
-![plant_sim](https://github.com/amberemeny/terminal_assignment/blob/testing/images/plant_sim.gif?raw=true)
+![plant_sim](https://github.com/amberemeny/terminal_assignment/blob/master/images/plant_sim.gif?raw=true)
 ## Description
 Plant Sim is a ruby application and plant simulation game written by Amber Emeny as an assessment for Coder Academy's FastTrack Program.
 <br> The game allows the player to care for a virtual sunflower seedling until it flowers or dies. 
