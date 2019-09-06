@@ -69,7 +69,7 @@ The implementation of features is handled by Trello. Here is a link to my board:
 
 In the board are assessment criteria organised into cards, features to be implemented featuring checklists and a checklist to write the readme file.
 Below is an example of how I organised the mapping out of variables to implement to ensure the application runs smoothly.
-![implementation](https://github.com/amberemeny/terminal_assignment/blob/testing/images/Class%20Implementation.jpg?raw=true)
+![implementation](https://github.com/amberemeny/terminal_assignment/blob/master/images/Class%20Implementation.jpg?raw=true)
 
 ## Development Log
 
