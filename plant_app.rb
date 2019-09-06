@@ -1,6 +1,6 @@
-require_relative "user_plant"
+require_relative "./classes/user_plant.rb"
 require_relative "simulation.rb"
-require_relative "new_game.rb"
+require_relative "./classes/new_game.rb"
 require 'colorize'
 require 'artii'
 
