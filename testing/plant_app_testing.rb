@@ -2,29 +2,32 @@
 require 'test/unit'
 
 # Uses main plant_app file to test.
-require_relative '../plant_app.rb'
+require_relative '../classes/user_plant.rb'
+require_relative '../simulation.rb'
 
-class PlantAppTest < Test::Unit::TestCase
-    # Setting up a new user plant --
-    def setup
-        @user_plant = User_plant.new(0, "outside", 0)
+class PlantAppTest < Test::Unit::TestCase # Testing to see if new games are being initialized properly.
+    def test_plant_initialization # Tests if plant is being initialised properly.
+        plant = Sunflower.new("outside", 1) # Creates a new plant.
+        assert_equal(0, plant.water_level) # Tests water_level.
+        assert_equal(1, plant.growth_level) # Tests growth_level.
+        assert_equal("outside", plant.location) # Tests location.
+        assert_equal(false, plant.fertiliser) # Tests fertiliser.
+        assert_equal(false, plant.pesticide) # Tests pesticide.
+        assert_equal(0, plant.growth_modifier) # Tests growth_modifier.
     end
+    def test_growth_level_calculation # Tests to make sure the growth_modifier is working correctly.
+        plant = Sunflower.new("outside", 1) # Creates a new plant.
+        user_game = Simulation.new(plant) # Initializes a new simulation.
 
-    # Testing if new plant's water_level is at 0 --
-    def test_water_level
-        assert_equal(0, @user_plant.water_level)
-    end
+        plant.water_level = 5 # Sets plant water level to 5.
+        plant.pesticide = true # Sets plant pesticide to true.
 
-    # Testing if new plant's location is outside --
-    def test_location
-        assert_equal("outside", @user_plant.location)
-    end
+        user_game.calculate_modifier # Calls the user_game calculate_modifier method.
+        # location = "outside" = 0.5
+        # no bugs = 0
+        # no fertiliser = 0
+        # water_level = 5 = 0.7
+        assert_equal(1.2, plant.growth_modifier)
 
-    # Testing if new plant's growth_level is 0 --
-    def test_growth_level
-        assert_equal(0, @user_plant.growth_level)
     end
 end
-
-
-
