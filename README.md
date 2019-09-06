@@ -28,7 +28,24 @@ This application uses both the __aarti__ and __colorize__ gems to enhance the vi
 ## Build Status
 The current build of Plant Sim is in its end stages of testing.
 ## Instructions for Use
-	
+1. Follow these instructions to download and install Ruby on your computer.
+2. Download and unzip the files on your local computer.
+3. On the terminal command line, navigate to the folder you just extracted from the zip file, and install bundler.
+```
+> install bundler
+```
+4. Ask bundle to install the gems that we use for the program.
+```
+> bundle install
+```
+5. Input the below command in the terminal command line.
+```
+> ruby plant_app.rb
+```
+
 ## Design and Planning Progress
  The whole design, development and coding process can be viewed in the included `software_development_plan.md` file.
 ## Testing
+<br> Tests were written and carried out using the test-unit ruby gem. 
++ Test 1 - tests to see if the `plant` object under the `Sunflower` class is initiated properly.
++ Test 2 - tests to see if the `growth_modifier` variable is being calculated properly on each new day.

@@ -3,6 +3,7 @@ GEM
   specs:
     artii (2.1.2)
     colorize (0.8.1)
+    ocra (1.3.10)
     power_assert (1.1.5)
     test-unit (3.3.3)
       power_assert
@@ -13,6 +14,7 @@ PLATFORMS
 DEPENDENCIES
   artii (~> 2.1)
   colorize (~> 0.8.1)
+  ocra (~> 1.3)
   test-unit (~> 3.3)
 
 BUNDLED WITH
