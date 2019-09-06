@@ -26,7 +26,7 @@ Plant Sim allows the user to care for and raise their virtual plant with realist
 ### Gems
 This application uses both the __aarti__ and __colorize__ gems to enhance the visual user experience.
 ## Build Status
-The current build of Plant Sim is in its end stages of testing.
+The current build of Plant Sim is in its completed state.
 ## Instructions for Use
 1. Follow these instructions to download and install Ruby on your computer.
 2. Download and unzip the files on your local computer.
